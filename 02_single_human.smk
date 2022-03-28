@@ -31,7 +31,7 @@ rule all:
           shif_sort_9bp_bai = expand(os.path.join(config["dir"]["shift_9bp_sort"],"{sample}_shift_sort.bam.bai"),sample=samples),
 
           #peaks calling
-          peaks = expand(os.path.join(config["dir"]["macs2_call_peak"],"{sample}_peaks.narrowPeak"),sample=samples),
+          peaks = expand(os.path.join(config["dir"]["macs2_call_peak"],"{sample}_peaks_narrowPeak"),sample=samples),
           
           #bam to bw
           bw = expand(os.path.join(config["dir"]["bw_file"],"{sample}.bw"),sample=samples)
@@ -187,7 +187,7 @@ rule peaks_calling:
      input:
           shif_sort_9bp = os.path.join(config["dir"]["shift_9bp_sort"],"{sample}_shift_sort.bam")
      output:
-          peaks = os.path.join(config["dir"]["macs2_call_peak"],"{sample}_peaks.narrowPeak")
+          peaks = os.path.join(config["dir"]["macs2_call_peak"],"{sample}_peaks_narrowPeak")
      params:
           names = "{sample}",
           species = "hs"
